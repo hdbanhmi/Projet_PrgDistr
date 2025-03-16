@@ -1,0 +1,11 @@
+server:
+  port: 8080  # Port de la Gateway (la Gateway sera accessible via http://localhost:8080)
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: task-service
+          uri: http://localhost:8081/  # URL de ton microservice TaskService
+          predicates:
+            - Path=/tasks/**  # Toutes les requêtes vers /tasks/** seront redirigées vers task-service
